@@ -1,26 +1,36 @@
 <?php
-    $A = [[16,5,7,36,9,8,4,2,3,6], [7,9,3,6,15,16,8,20,2,3]];
-    $B = [1,2,3,4,5,6,7,8,9,10];
     
+   for($i = 0; $i < 10; $i++){
+    $D[] = rand(0,20);
+    $E[] = rand(0,20); 
+   }
 
-    $mask = "|%5.5s |%-65.65s |\n";
+    echo "\n";
+    $A = [$D, $E];
+    $B = $D;
+    
+    $mask = "|%5.5s |%-10.10s |\n";
 
     printf($mask, 'Key', 'Value');
-    for($i = 0; $i < count($A); $i++){
-        // for($j = 0; $j < count($A[$i]); $j++){
-            printf($mask, $i, implode(",", $A[$i]));
-        // }
+    $i = 0;
+    foreach($A as $key => $value){
+        foreach($value as $k => $val){
+            printf($mask, $k, $val);
+        }
     }
     echo "\n";
 
     $merge = array_merge($A[0],$A[1]);
     $result = array_intersect($merge, $B); 
     print_r(implode(",", $result));
-
     echo "\n";
 
+    echo "\n";
     printf($mask, 'Key', 'Value');
-    printf($mask, 0, implode(",",$B));
+    foreach($B as $key => $value){
+        printf($mask, $key, $value);
+    }
+    
     
     echo "\n";
 
@@ -31,6 +41,9 @@
             $array[] = 'нет';
         }
     }
-    printf($mask, 0, implode(",",$array));
+    foreach($array as $key => $value){
+        printf($mask, $key, $value);
+    }
+    
     echo "\n";
 ?>
